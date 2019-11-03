@@ -1,7 +1,9 @@
 {%extends 'base.html'%}
+
 {%block content%}
 {%if messages%}
 {%for message in messages%}
+
     <div class="alert alert-warning alert-dismissable" role="alert">
         <button class="close" data-dismiss="alert">
             <small><sup>x</sup></small>
@@ -12,7 +14,8 @@
 {%endif%}
 
 {%if all_items%}
-<table class="table table-bordered">
+
+<table class="table table-bordered" id=ht>
    {%for things in all_items%}
    {% if things.completed %}
        <tr class="table-secondary">
@@ -24,7 +27,8 @@
        <tr>
             <td><a href="{%url 'edit' things.id%}">{{things.item}}</a></td> 
             <td><center><a href="{%url 'cross_off' things.id%}">Cross Off</a></center></td>
-            <td><center><a href="{% url 'delete' things.id%}">Delete</a></center></td>
+            <!-- <td><center><a href="{% url 'delete' things.id%}">Delete</a></center></td> -->
+            <td><center><a href="{% url 'delete' things.id%}" onclick="return confirm('Are you sure you want to delete this item?');">Delete</a></center>
          </tr>
     {%endif%}
    {%endfor%}

@@ -9,3 +9,9 @@ urlpatterns = [
   path('edit/<list_id>',views.edit,name='edit'),
   
 ]
+
+
+
+
+
+
